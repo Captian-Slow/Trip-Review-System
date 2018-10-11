@@ -1,20 +1,41 @@
-var sqllite3 = require('sqlite3').verbose();
-var express = require('express');
-var app = express();
+const sqlite3 = require('sqlite3').verbose();
+const express = require('express');
+const app = express();
+const routes = require('./middleware/routes');
+const db_initializer = require('./db_initialiser');
+const body_parser = require('body-parser');
+const port = 80;
 
+// Setting up the middleware
+app.use(routes);
 
-// Attempting to create the database object
-var db = sqllite3.Database(':memory:', undefined, function (err, status) {
+// Setting the template engine as jade for later use.
+app.set('view engine', 'jade');
 
+// Using body-parser middleware as application/json
+app.use(body_parser.json());
+
+// Attempting to create the database object. Creates the .db file if it does not exist
+var db = new sqlite3.Database('./db/TripReview.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, function (err, status) {
     if (err) {
-        console.log('----------------Error create database object---------------\n');
+        console.log('\nError creating database object\n');
         return console.error(err.stack);
     }
-
     console.log('Database object created successfully');
     console.log('Log: ' + status);
 });
 
+// Initialising the database with the tables and checking for their existance
+db_initializer.initialise(db);
 
+db.close((err) => {
+    if (err) {
+        console.log('Error closing database object\n');
+        return console.error(err.stack);
+    }
+    console.log('Database object closed successfully');
+});
+
+app.listen(port, () => console.log(`Example app listening on port ` + port + `!`))
 
 
