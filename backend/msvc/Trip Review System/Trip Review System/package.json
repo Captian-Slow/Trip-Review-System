@@ -1,0 +1,14 @@
+{
+  "name": "trip-review-system",
+  "version": "0.0.0",
+  "description": "Trip Review System",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "sqlite3": "^4.0.4"
+  }
+}
