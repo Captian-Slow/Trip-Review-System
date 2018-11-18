@@ -1,3 +1,0 @@
-﻿# Trip Review System
-
-

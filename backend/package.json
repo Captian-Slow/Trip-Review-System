@@ -1,0 +1,25 @@
+{
+  "name": "trip_review_system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Captian-Slow/Trip-Review-System-mini-project.git"
+  },
+  "author": "Amit Kumar Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Captian-Slow/Trip-Review-System-mini-project/issues"
+  },
+  "homepage": "https://github.com/Captian-Slow/Trip-Review-System-mini-project#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "sqlite3": "^4.0.4"
+  }
+}
